@@ -27,17 +27,43 @@
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="Quit">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>200</y>
+      <x>630</x>
+      <y>490</y>
       <width>112</width>
       <height>34</height>
      </rect>
     </property>
     <property name="text">
-     <string>pic</string>
+     <string>Quit</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="result">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>300</y>
+      <width>81</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="rec">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>300</y>
+      <width>112</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Recognize</string>
     </property>
    </widget>
   </widget>
@@ -50,29 +76,61 @@
      <height>30</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>文件</string>
+    </property>
+    <addaction name="fileopen"/>
+   </widget>
+   <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="fileopen">
+   <property name="text">
+    <string>打开</string>
+   </property>
+   <property name="toolTip">
+    <string>打开</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton</sender>
+   <sender>Quit</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>showpic()</slot>
+   <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>518</x>
-     <y>263</y>
+     <x>686</x>
+     <y>535</y>
     </hint>
     <hint type="destinationlabel">
-     <x>611</x>
-     <y>312</y>
+     <x>739</x>
+     <y>484</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rec</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>recognize()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>542</x>
+     <y>342</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>662</x>
+     <y>339</y>
     </hint>
    </hints>
   </connection>
  </connections>
  <slots>
   <slot>showpic()</slot>
+  <slot>recognize()</slot>
  </slots>
 </ui>
