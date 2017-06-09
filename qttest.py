@@ -13,6 +13,7 @@ from PyQt5 import QtWidgets, QtGui, QtCore
 
 Openfile = ''  # 全局变量记录打开的文件路径
 text1 = ''  # 记录识别结果
+Opendir = '' # 记录打开的目录路径
 
 
 class recognizer(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -20,6 +21,7 @@ class recognizer(QtWidgets.QMainWindow, Ui_MainWindow):
         super(recognizer, self).__init__()
         self.setupUi(self)
         self.fileopen.triggered.connect(self.showpic)
+        self.diropen.triggered.connect(self.showdir)
         # self.pushButton.clicked.connect(self.showpic)  # 槽函数不用加括号
 
         # Label字体设置
@@ -28,12 +30,16 @@ class recognizer(QtWidgets.QMainWindow, Ui_MainWindow):
         self.result.setAlignment(QtCore.Qt.AlignCenter)  # 文字居中
         self.revise.setAlignment(QtCore.Qt.AlignCenter)
 
-    def showpic(self):  # 定义槽 打开图片
+    def showpic(self):  # 定义槽
         global Openfile
-        file, ok = QtWidgets.QFileDialog.getOpenFileName(self, "打开", "C:/", "All Files (*);;Text Files (*.txt)")
-        self.statusbar.showMessage(file)
-        self.originalpic.setPixmap(QtGui.QPixmap(file).scaled(self.originalpic.size()))  # 显示图片自适应窗口大小
-        Openfile = file
+        Openfile, ok = QtWidgets.QFileDialog.getOpenFileName(self, "Open File", "C:/", "Pic Files (*.png;*.jpg;*.bmp;*.gif)")
+        self.statusbar.showMessage(Openfile)
+        self.originalpic.setPixmap(QtGui.QPixmap(Openfile).scaled(self.originalpic.size()))  # 显示图片自适应窗口大小
+
+    def showdir(self):
+        global Opendir
+        Opendir = QtWidgets.QFileDialog.getExistingDirectory(self, "Select Dir", "C:/")
+        self.dirpath.setText("Path loaded: " + Opendir)
 
     def recognize(self):  # 连接识别程序
         global text1
@@ -46,10 +52,9 @@ class recognizer(QtWidgets.QMainWindow, Ui_MainWindow):
         global Openfile
         temp = Openfile.split('_')[0]
         newname = temp + '_' + text1 + '.png'
-        Openfile = newname  # 更新打开路径
         os.rename(Openfile, newname)
         QtWidgets.QMessageBox.information(self, "Info", "Update success")  # 运行成功弹窗
-
+        Openfile = newname  # 更新打开路径
 
 if __name__ == "__main__":
 

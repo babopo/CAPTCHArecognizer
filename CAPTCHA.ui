@@ -33,7 +33,7 @@
    <widget class="QGroupBox" name="ImgShow">
     <property name="geometry">
      <rect>
-      <x>240</x>
+      <x>10</x>
       <y>10</y>
       <width>281</width>
       <height>151</height>
@@ -65,8 +65,8 @@
    <widget class="QGroupBox" name="REC">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>200</y>
+      <x>10</x>
+      <y>160</y>
       <width>281</width>
       <height>301</height>
      </rect>
@@ -171,6 +171,38 @@ font: 9pt &quot;Microsoft YaHei UI&quot;;</string>
      </property>
     </widget>
    </widget>
+   <widget class="QGroupBox" name="Batchbox">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>20</y>
+      <width>491</width>
+      <height>441</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(0, 255, 255);</string>
+    </property>
+    <property name="title">
+     <string>Batch</string>
+    </property>
+    <widget class="QLabel" name="dirpath">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>471</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -186,6 +218,7 @@ font: 9pt &quot;Microsoft YaHei UI&quot;;</string>
      <string>File</string>
     </property>
     <addaction name="fileopen"/>
+    <addaction name="diropen"/>
    </widget>
    <addaction name="menu"/>
   </widget>
@@ -196,6 +229,11 @@ font: 9pt &quot;Microsoft YaHei UI&quot;;</string>
    </property>
    <property name="toolTip">
     <string>Open</string>
+   </property>
+  </action>
+  <action name="diropen">
+   <property name="text">
+    <string>Dir</string>
    </property>
   </action>
  </widget>
@@ -224,12 +262,12 @@ font: 9pt &quot;Microsoft YaHei UI&quot;;</string>
    <slot>recognize()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>392</x>
-     <y>383</y>
+     <x>162</x>
+     <y>343</y>
     </hint>
     <hint type="destinationlabel">
-     <x>662</x>
-     <y>339</y>
+     <x>312</x>
+     <y>360</y>
     </hint>
    </hints>
   </connection>
@@ -240,12 +278,12 @@ font: 9pt &quot;Microsoft YaHei UI&quot;;</string>
    <slot>updaterevise()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>381</x>
-     <y>508</y>
+     <x>151</x>
+     <y>483</y>
     </hint>
     <hint type="destinationlabel">
-     <x>574</x>
-     <y>508</y>
+     <x>219</x>
+     <y>528</y>
     </hint>
    </hints>
   </connection>
